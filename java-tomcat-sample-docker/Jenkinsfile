@@ -27,7 +27,8 @@ pipeline {
                 timeout(time: 5, unit: 'DAYS'){
                     input message: 'Do you want to push this image to DockerHub'
                 }
-                bat 'cd'
+                bat "docker tag tomcatsamplewebapp:${env.BUILD_ID} fireboy30/tomcatsamplewebapp:${env.BUILD_ID}"
+                bat "docker push fireboy30/tomcatsamplewebapp:${env.BUILD_ID}"
             }
         }
 
